@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	<f:view contentType="text/html">
+	
+		<h:head>
+			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+			<link rel="stylesheet" type="text/css" href="style/default.css" media="screen" />
+			<link rel="stylesheet" type="text/css" href="style/butskri.css" media="screen" />
+			<title>PrimeFaces - Easybudget</title>
+			<ui:insert name="head" />
+			<style type="text/css">
+				.new {
+					background: url(img/new.png) no-repeat;
+				}
+				
+				.search {
+					background: url(img/search.png) no-repeat;
+				}
+			</style>
+		</h:head>
+	
+		<h:body>
+			<div class="outer-container">
+			
+				<div class="inner-container">
+			
+					<div class="header">
+						<div class="title">
+							<span class="sitename"><a href="index.html">Easybudget</a></span>
+							<div class="slogan">Overzicht Inkomsten / Uitgaven</div>
+						</div>
+					</div>
+
+					<p:menubar>
+						<p:submenu label="Uitgaven">
+							<p:menuitem label="Creëer" url="/createUitgave.jsf" styleClass="new"></p:menuitem>
+							<p:menuitem label="Zoek" url="/searchUitgaven.jsf" styleClass="search"></p:menuitem>
+						</p:submenu>
+						<p:submenu label="Opties">
+							<p:menuitem label="Logout" url="/logout"></p:menuitem>
+						</p:submenu>
+					</p:menubar>
+			
+					<div class="main">
+						<div class="content">
+							<ui:insert name="content" />
+						</div>
+			
+						<div class="clearer"></div>
+			
+					</div>
+			
+					<div class="footer">
+						<span class="left">Gemaakt door Butskri</span> 
+						<span class="right">
+							<p:ajaxStatus>
+								<f:facet name="start">
+									<h:graphicImage value="img/ajax-loader.gif" />
+								</f:facet>
+								
+								<f:facet name="complete">
+									Status
+								</f:facet>
+							</p:ajaxStatus>
+						 </span>
+			
+						<div class="clearer"></div>
+			
+					</div>
+			
+				</div>
+			
+			</div>
+		
+		</h:body>
+	</f:view>
+
+</html>

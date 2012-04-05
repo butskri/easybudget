@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:fun="http://www.argenta.be/boar/functions"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+<!-- Omdat een action oftewel een literal, oftewel een MethodExpression verwacht, doen we hier een workaround via de singletonbean
+		'actionBean'. We zetten het action element via f:param op de request, de actionBean gaat die daar op zijn beurt ophalen.
+		Zie ook de klasse ActionBean. -->
+<!-- jQuery(this).replaceWith(jQuery('a', this).html()) voorkomt dat men op de link kan dubbelklikken en een invalidtoken 
+		exception veroorzaakt. -->
+<ui:composition>
+	<a4j:outputPanel rendered="#{rendered ne false}" onclick="jQuery(this).replaceWith(jQuery('a', this).html())">
+		<h:commandLink id="#{id}" value="#{value}" onclick="#{onclick}"
+			action="#{actionBean.getAction}" immediate="#{immediate}" title="#{title}" 
+			style="#{style}" disabled="#{disabled}">
+			<ui:insert />
+			<f:param name="action" value="#{action}" />
+		</h:commandLink>
+	</a4j:outputPanel>
+</ui:composition>
+
+</html>

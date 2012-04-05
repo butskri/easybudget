@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+	<converter>
+		<converter-for-class>be.butskri.commons.types.Bedrag</converter-for-class>
+		<converter-class>be.butskri.commonsweb.faces.convert.BedragConverter</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-for-class>be.butskri.easybudget.domain.uitgaven.UitgaveCategorie</converter-for-class>
+		<converter-class>be.butskri.commonsweb.faces.convert.UitgaveCategorieConverter</converter-class>
+	</converter>
+</faces-config>

@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:comp="http://www.argenta.be/boar/components"
+	xmlns:fun="http://www.argenta.be/boar/functions"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:butskri="http://www.butskri.be/taglib/jsf"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:param name="defaultAction" value="bewaren" />
+
+	<ui:define name="werkzoneTitle">#{messages.nieuweUitgave_title}</ui:define>
+	<ui:define name="werkzoneIntro">#{messages.nieuweUitgave_intro}</ui:define>
+	
+	<ui:define name="werkzone">
+		<butskri:fields>
+		<!-- 
+			<a4j:region id="categorieSelectie" >
+			<h:selectOneMenu id="categorieId" value="#{uitgaveBean.categorieId}" >
+				<f:selectItem itemLabel="" itemValue=" " />
+				<f:selectItems value="#{selectItemsBean.uitgaveCategorien}" />
+				<f:attribute name="label" value="#{messages.nieuweUitgave_categorie}" />
+				<f:attribute name="fieldRequired" value="true" />
+				<ui:insert />
+			</h:selectOneMenu>
+			 -->
+			 
+				<butskri:selectBox fieldName="categorieId" entity="#{uitgaveBean}" selectItems="#{selectItemsBean.uitgaveCategorien}" 
+					label="#{messages.nieuweUitgave_categorie}" required="true" />
+					<!-- 
+					<a4j:support event="onchange" reRender="subcategorieId"  action="#{uitgaveController.categorieGeselecteerd(uitgaveBean)}" ajaxSingle="true"/>
+					 -->
+			
+				<butskri:selectBox fieldName="subcategorieId" entity="#{uitgaveBean}" selectItems="#{uitgaveBean.subcategorieList}" 
+					label="#{messages.nieuweUitgave_subcategorie}" required="true"/>
+		<!-- 
+			</a4j:region>
+			-->
+		</butskri:fields>
+	</ui:define>
+	
+	<ui:define name="knoppenzone">
+		<butskri:commandButton id="bewaren" value="#{messages.common_button_bewaren}" action="bewaren" />
+		<butskri:commandButton id="annuleren" value="#{messages.common_button_annuleren}" action="annuleren" />
+	</ui:define>
+</ui:composition>

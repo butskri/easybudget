@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="easybudgetDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${easybudget.db.driver}" />
+		<property name="url" value="${easybudget.db.url}" />
+		<property name="username" value="${easybudget.db.username}" />
+		<property name="password" value="${easybudget.db.password}" />
+	</bean>
+
+<!-- 
+	<bean id="easybudgetDataSource" class="com.atomikos.jdbc.SimpleDataSourceBean"
+		init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="${easybudget.jdbc.uniqueResourceName}"/>
+		<property name="xaDataSourceClassName" value="${easybudget.jdbc.xaDataSourceClassName}"/>
+		<property name="xaDataSourceProperties" value="${easybudget.jdbc.xaDataSourceProperties}"/>
+		<property name="exclusiveConnectionMode" value="${easybudget.jdbc.exclusiveConnectionMode}"/>
+		<property name="connectionPoolSize" value="${easybudget.jdbc.connectionPoolSize}"/>
+	</bean>
+	 -->
+</beans>

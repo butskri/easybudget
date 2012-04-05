@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="languageBean" class="be.butskri.commons.util.LanguageBean" >
+	<!-- TODO remove this code later
+		<aop:scoped-proxy/>
+		<property name="localeResolver" ref="myLocaleResolver"/>
+		<property name="supportedLocales" ref="supportedLocales" />
+		 -->
+	</bean>
+	<!-- 
+	<bean id="myLocaleResolver" class="be.butskri.commonweb.faces.util.FacesLocaleResolver" />
+	<bean id="supportedLocales" class="be.butskri.commonweb.util.SupportedLocalesForFacesConfigFactory" factory-method="create">
+		<constructor-arg value="/faces-config.xml" />
+	</bean>
+	 -->
+	<bean id="facesUtil" class="be.butskri.commonweb.faces.util.FacesUtil" />
+
+	<bean id="messageUtil" class="be.butskri.commonweb.util.MessageUtil">
+		<property name="languageBean" ref="languageBean" />
+		<property name="messageSource" ref="messageSource" />
+	</bean>
+
+	<bean id="facesMessageFactory" class="be.butskri.commonweb.faces.util.FacesMessageFactory">
+		<property name="facesUtil" ref="facesUtil" />
+		<property name="messageUtil" ref="messageUtil" />
+	</bean>
+
+</beans>

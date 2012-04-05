@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="easybudget" basedir="." default="info">
+
+	<property name="commons-anttasks-path" value="../../../../commons-anttasks" />
+
+	<property file="project.properties" />
+	<property file="${commons-anttasks-path}/general.properties" />
+	<property file="${commons-anttasks-path}/dev.properties" />
+	<property file="${commons-anttasks-path}/project-specific.properties" />
+	
+	<import file="${commons-anttasks-path}/db-tasks.xml"/>
+	<import file="${commons-anttasks-path}/rollout.xml"/>
+
+	<target name="info">
+		<echo message="showing properties for project ${project_name}" />
+		<echo message="commons-anttasks-path : ${commons-anttasks-path}" />
+		<antcall target="info-db-tasks" />
+		<antcall target="info-rollout" />
+	</target>
+	
+</project>

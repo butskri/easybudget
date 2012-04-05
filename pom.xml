@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>be.butskri</groupId>
+	<artifactId>easybudget</artifactId>
+	<packaging>pom</packaging>
+	<name>easybudget</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<description />
+	<!--
+	<modules>
+		<module>easybudget-service</module>
+		<module>easybudget-web</module>
+		<module>easybudget-wicket</module>
+		<module>easybudget-primefaces</module>
+	</modules>
+	-->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>be.butskri</groupId>
+				<artifactId>butskri-commonutils</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>be.butskri</groupId>
+				<artifactId>butskri-commontest</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>be.butskri</groupId>
+				<artifactId>easybudget-service</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.6.8</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>1.6.8</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

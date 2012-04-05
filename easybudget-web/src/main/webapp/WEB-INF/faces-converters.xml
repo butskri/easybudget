@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+
+	<validator>
+		<validator-id>butskri.RegExValidator</validator-id>
+		<validator-class>be.butskri.commonweb.faces.validator.RegExValidator</validator-class>
+	</validator>
+	<validator>
+		<validator-id>butskri.NotNullValidator</validator-id>
+		<validator-class>be.butskri.commonweb.faces.validator.NotNullValidator</validator-class>
+	</validator>
+	
+	<converter>
+		<converter-id>butskri.EnumTranslationConverter</converter-id>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.EnumTranslationConverter
+		</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-for-class>java.lang.String</converter-for-class>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.StringConverter
+		</converter-class>
+	</converter>
+	<converter>
+		<converter-for-class>java.util.Date</converter-for-class>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.DateConverter
+		</converter-class>
+	</converter>
+	<converter>
+		<converter-for-class>java.lang.Enum</converter-for-class>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.EnumValueConverter
+		</converter-class>
+	</converter>
+	
+	<converter>
+		<converter-for-class>be.butskri.commons.types.Rekeningnummer</converter-for-class>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.RekeningnummerConverter
+		</converter-class>
+	</converter>
+	<converter>
+		<converter-for-class>be.butskri.commons.types.Bedrag</converter-for-class>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.BedragConverter
+		</converter-class>
+	</converter>
+	<converter>
+		<converter-for-class>be.butskri.commons.types.Identifier</converter-for-class>
+		<converter-class>
+			be.butskri.commonweb.faces.convert.IdentifierConverter
+		</converter-class>
+	</converter>
+	
+	
+	<!-- TODO remove this code?? -->
+	<!-- 
+	<converter>
+		<converter-id>boar.LongConverter</converter-id>
+		<converter-class>
+			be.argenta.web.boar.converter.LongConverter
+		</converter-class>
+	</converter>
+	<converter>
+		<converter-id>boar.BigDecimalConverter</converter-id>
+		<converter-class>
+			be.argenta.web.boar.converter.BigDecimalConverter
+		</converter-class>
+	</converter>
+	<converter>
+		<converter-id>boar.YearConverter</converter-id>
+		<converter-class>
+			be.argenta.web.boar.converter.YearConverter
+		</converter-class>
+	</converter>
+	 -->
+</faces-config>

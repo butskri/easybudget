@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:comp="http://www.argenta.be/boar/components"
+	xmlns:fun="http://www.argenta.be/boar/functions"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:butskri="http://www.butskri.be/taglib/jsf"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:param name="defaultAction" value="bewaren" />
+
+	<ui:define name="werkzoneTitle">#{messages.nieuweUitgave_title}</ui:define>
+	<ui:define name="werkzoneIntro">#{messages.nieuweUitgave_intro}</ui:define>
+	
+	<ui:define name="werkzone">
+		<a4j:region id="categorieSelectie" selfRendered="true">
+			<butskri:fields>
+				<butskri:selectBox fieldName="categorieId" entity="#{uitgaveBean}" selectItems="#{selectItemsBean.uitgaveCategorien}" 
+					label="#{messages.nieuweUitgave_categorie}" required="true">
+				</butskri:selectBox>
+				<butskri:selectBox fieldName="subcategorieId" entity="#{uitgaveBean}" selectItems="#{uitgaveBean.subcategorieList}" 
+					label="#{messages.nieuweUitgave_subcategorie}" required="true"/>
+			</butskri:fields>
+		</a4j:region>
+	</ui:define>
+	
+	<ui:define name="knoppenzone">
+		<butskri:commandButton id="bewaren" value="#{messages.common_button_bewaren}" action="bewaren" />
+		<butskri:commandButton id="annuleren" value="#{messages.common_button_annuleren}" action="annuleren" />
+	</ui:define>
+</ui:composition>

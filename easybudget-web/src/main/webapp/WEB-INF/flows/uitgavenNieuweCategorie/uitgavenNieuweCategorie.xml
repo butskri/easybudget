@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	  xmlns:beans="http://www.springframework.org/schema/beans"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:schemaLocation="http://www.springframework.org/schema/webflow
+						  http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" parent="parentFlow">
+
+	<var name="categorie" class="be.butskri.easybudget.facade.algemeen.CategorieTo" />
+	
+	<view-state id="details" view="categorieDetails.xhtml">
+		<on-render>
+			<evaluate result="viewScope.categorieDataModel" result-type="dataModel" expression="uitgaveFacade.getAlleCategorien()" />
+		</on-render>
+		<transition on="bewaren" to="details">
+			<evaluate expression="uitgaveFacade.createCategorie(categorie)" />
+		</transition>
+		<transition on="verwijderen" to="details">
+			<evaluate expression="uitgaveFacade.removeCategorie(categorieDataModel.selectedRow)" />
+		</transition>
+	</view-state>
+	
+</flow>

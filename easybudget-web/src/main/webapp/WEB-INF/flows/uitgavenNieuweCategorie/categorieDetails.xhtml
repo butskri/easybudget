@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:comp="http://www.argenta.be/boar/components"
+	xmlns:fun="http://www.argenta.be/boar/functions"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:butskri="http://www.butskri.be/taglib/jsf"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:param name="defaultAction" value="bewaren" />
+
+	<ui:define name="werkzoneTitle">#{messages.nieuweUitgaveCategorie_title}</ui:define>
+	<ui:define name="werkzoneIntro">#{messages.nieuweUitgaveCategorie_intro}</ui:define>
+	
+	<ui:define name="werkzone">
+		<h:panelGrid columns="3">
+			<butskri:textField fieldName="omschrijving" entity="#{categorie}" label="#{messages.categorie_omschrijving}"/>
+		</h:panelGrid>
+		<br />
+		<br />
+		
+		<butskri:commandButton id="bewaren" value="#{messages.common_button_bewaren}" action="bewaren" />
+		<butskri:commandButton id="annuleren" value="#{messages.common_button_annuleren}" action="annuleren" />
+		<br />
+		<br />
+		<br />
+		
+		<rich:extendedDataTable value="#{categorieDataModel}" var="cat" id="categorien" width="600px" height="400px">
+            <rich:column sortable="true" sortBy="#{cat.omschrijving}" filterBy="#{cat.omschrijving}" filterEvent="onkeyup" width="570px" label="Categorie">
+                <f:facet name="header">
+                    <h:outputText value="Categorie"/>
+                </f:facet>
+                <h:outputText value="#{cat.omschrijving}"/>
+            </rich:column> 
+            <rich:column sortable="false" label="Verwijderen">  
+                <f:facet name="header">
+                    <h:outputText value=""/>
+                </f:facet>
+                <h:graphicImage onclick="verwijderen" value="/static/images/delete16.gif" />
+            </rich:column>
+        </rich:extendedDataTable>
+	</ui:define>
+</ui:composition>

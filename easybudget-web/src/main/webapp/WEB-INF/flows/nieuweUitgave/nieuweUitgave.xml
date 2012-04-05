@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	  xmlns:beans="http://www.springframework.org/schema/beans"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:schemaLocation="http://www.springframework.org/schema/webflow
+						  http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" parent="parentFlow">
+
+	<var name="uitgaveBean" class="be.butskri.web.easybudget.GeldstroomBean" />
+	
+	<view-state id="details" view="uitgaveDetails.xhtml">
+		<transition on="bewaren" to="details">
+			<evaluate expression="uitgaveController.bewaren(uitgaveBean)" />
+		</transition>
+		<transition on="categorieGeselecteerd" to="details" validate="false">
+			<set name="flashScope.textMessage" value="'dit is mijn boodschap'" />
+			<evaluate expression="uitgaveController.categorieGeselecteerd(uitgaveBean)" />
+		</transition>
+	</view-state>
+	
+</flow>

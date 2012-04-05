@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+	  xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+      xmlns:butskri="http://www.butskri.be/taglib/jsf"
+      xmlns:fun="http://www.butskri.be/commons/functions">
+
+<ui:composition>
+	<!-- 
+	<c:if test="#{empty required}">
+		<c:set var="required" value="true" />
+	</c:if>
+	<c:if test="#{empty rendered}">
+		<c:set var="rendered" value="true" />
+	</c:if>
+	 -->
+	<butskri:field fieldName="#{fieldName}" label="#{label}" rendered="true" >
+		<h:selectOneMenu id="#{fieldName}" value="#{entity[fieldName]}" required="#{fun:fieldRequired(required)}" >
+			<f:selectItem itemLabel="kies een waarde" itemValue=" " />
+			<f:selectItems value="#{selectItems}" />
+			<f:attribute name="label" value="#{label}" />
+			<a4j:support event="onchange" reRender="mainForm:subcategorieId"  
+				action="categorieGeselecteerd"
+				onsubmit="startAjaxCall()"
+				oncomplete="ajaxCallCompleted()" ajaxSingle="true"/>
+			<ui:insert />
+		</h:selectOneMenu>
+	</butskri:field>
+</ui:composition>
+
+</html>

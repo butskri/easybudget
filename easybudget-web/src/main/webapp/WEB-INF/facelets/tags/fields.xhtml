@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:butskri="http://www.butskri.be/taglib/jsf"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<ui:composition>
+	<script language="JavaScript">
+	//<![CDATA[
+	
+		function startAjaxCall() {
+			setIgnoreRequiredness(true);
+			alert('submitting ajax call');
+		}
+		
+		function ajaxCallCompleted() {
+			setIgnoreRequiredness(false);
+			alert('ajax call completed');
+		}
+		
+     	function setIgnoreRequiredness(ignoreRequiredness) {
+     		$('ignoreRequiredness').value = ignoreRequiredness;
+     	}
+   	//]]>
+	</script>
+
+	<input id="ignoreRequiredness" name="ignoreRequiredness" type="hidden" value="false" />
+	<table>
+		<ui:insert />
+	</table>
+	<div>
+		message: ${textMessage}
+	</div>
+</ui:composition>
+
+</html>

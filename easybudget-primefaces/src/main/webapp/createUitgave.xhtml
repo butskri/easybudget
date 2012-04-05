@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="template.xhtml">
+	
+	<ui:define name="head">
+		<style type="text/css">
+			.label {
+				width:20%;
+				padding:2px;
+			}
+
+			.value {
+				width:80%;
+				padding:2px;
+			}
+			
+			.grid {
+				width:100%;
+			}
+			
+			.yui-skin-sam .yui-ac-input {
+				position: relative;
+			}
+		</style>
+	</ui:define>
+	
+  <ui:define name="content">
+		<h:form prependId="false">
+			<p:messages id="msgs" showDetail="true"/>
+			
+			<p:panel id="panel" header="Nieuwe Uitgave">
+				<p:growl showDetail="true"/>
+				
+				<h:panelGrid columns="2"  columnClasses="label,value" styleClass="grid">
+					<h3>Algemeen</h3>
+					<h:outputText />
+					
+					<h:outputLabel for="datum" value="Datum" />
+					<p:calendar id="datum" value="#{uitgaveBean.datum}" title="Kies een datum"/>
+					
+					<h:outputLabel for="bedrag" value="Bedrag" />
+					<h:inputText id="bedrag" value="#{uitgaveBean.bedrag}"/>
+					
+					<h:outputLabel for="categorie" value="Categorie" />
+					<p:autoComplete id="categorie" value="#{uitgaveBean.categorie}" 
+						completeMethod="#{uitgaveBean.zoekCategorie}" var="categorie" 
+					    itemLabel="#{categorie.volledigeOmschrijving}" itemValue="#{categorie}" />
+					
+					<f:verbatim />
+					<p:commandLink 
+						ajax="true" 
+						actionListener="#{uitgaveBean.showNieuweCategorie}" 
+						update="nieuweCategorieDialog" 
+						value="Nieuwe categorie toevoegen" />
+
+				</h:panelGrid>
+				<p:dialog id="nieuweCategorieDialog" header="Selecteer hoofdcategorie" width="500px;" widgetVar="categorieDialog" visible="#{uitgaveBean.showNieuweCategorieDialog}">
+				  	<h:panelGrid columns="2" >
+					    <h:outputLabel for="hoofdcategorie" value="Hoofdcategorie:" />
+						<p:autoComplete id="hoofdcategorie" value="#{uitgaveBean.hoofdcategorie}" 
+							completeMethod="#{uitgaveBean.zoekCategorie}" var="categorie" 
+						    itemLabel="#{categorie.volledigeOmschrijving}" itemValue="#{categorie}" />
+						    
+					    <h:outputLabel for="subcategorieOmschrijving" value="Subcategorie:" />
+					    <h:inputText id="subcategorieOmschrijving" value="#{uitgaveBean.subcategorieOmschrijving}" />
+						    
+				    	<p:commandButton value="Annuleren" oncomplete="categorieDialog.hide();" styleClass="button" />
+						<p:commandButton value="Voeg toe" ajax="true"
+							actionListener="#{uitgaveBean.saveCategorie}"
+							update="categorie,nieuweCategorieDialog,msgs"
+							styleClass="button" />
+			    	</h:panelGrid>
+				</p:dialog>
+			</p:panel>
+
+	  		<p:commandButton value="Annuleren"  action="annuleren" styleClass="button"/>
+  			<p:commandButton value="Bewaren" action="#{uitgaveBean.saveUitgave}" styleClass="button"/>
+		</h:form>
+		
+  </ui:define>
+  
+</ui:composition>

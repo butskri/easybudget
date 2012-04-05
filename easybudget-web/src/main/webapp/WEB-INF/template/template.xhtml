@@ -1,0 +1,145 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:butskri="http://www.butskri.be/taglib/jsf"
+	xmlns:rich="http://richfaces.org/rich">
+
+<head>
+	<title>#{messages.general_title}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link href="#{facesContext.externalContext.requestContextPath}/static/css/butskri.css" rel="stylesheet" type="text/css" />
+	<link href="#{facesContext.externalContext.requestContextPath}/static/css/elements.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/static/js/jquery-1.2.6.min.js" />
+	<script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/static/js/progress.js.jsp" />
+	<script language="JavaScript">
+	//<![CDATA[
+     	jQuery.noConflict();
+   	//]]>
+	</script>
+
+<script language="JavaScript">
+   		//<![CDATA[
+		function initPage() {
+			fields = document.getElementById('mainForm').elements;
+			for (var i=0; i<fields.length; i++) {
+				  if (fields[i].type != "hidden" && !fields[i].disabled) {
+				  		fields[i].focus();
+				 		break;
+				  }
+			}
+			document.forms['mainForm'].onkeypress = voerDefaultActionUitAlsOpEnterGeklikt;
+			afterPageLoaded();
+		}
+
+		function EventHandler() {
+			this.eventListeners = Array();
+
+			this.addEventListener = function(eventListener) {
+				this.eventListeners[this.eventListeners.length] = eventListener;
+			}
+
+			this.notifyListeners = function() {
+				for (var i = 0; i < this.eventListeners.length; i++) {
+					this.eventListeners[i]();
+				}
+			}
+		}
+
+		var afterPageLoadedHandler = new EventHandler();
+		afterPageLoadedHandler.addEventListener(preloadImgs);
+
+		function afterPageLoaded() {
+			afterPageLoadedHandler.notifyListeners();
+		}
+
+		function voerDefaultActionUitAlsOpEnterGeklikt(evt) {
+		  var keycode;
+		  if (evt) ;
+		  else if (window.event) evt = window.event;
+		  else if (event) evt = event;
+		  else return true;
+
+		  if (evt.charCode) keycode = evt.charCode;
+		  else if (evt.keyCode) keycode = evt.keyCode;
+		  else if (evt.which) keycode = evt.which;
+		  else keycode = 0;
+
+		  if (keycode == 13 && !isEventThrownInInputText(evt)) {
+		  	if (document.getElementById('mainForm:#{defaultAction}') != null) {
+		  		document.getElementById('mainForm:#{defaultAction}').click();
+		  	}
+		  	return false;
+		  } else {
+			return true;
+		  }
+		}
+
+		function isEventThrownInInputText(evt) {
+		  var target;
+
+		  if (evt.target) target = evt.target;
+		  else if (evt.srcElement) target = evt.srcElement;
+
+		  if (target) {
+		  	if (target.type && target.type == 'textarea') {
+		  	  return true;
+		  	}
+		  }
+		  return false;
+		}
+		//]]>
+	</script>
+</head>
+<body  onload="initPage();">
+
+<f:view locale="#{languageBean.locale}">
+
+<!-- 
+	<span style="display: none"> <a4j:status id="ajaxStatus"
+		startText="started" stopText="finished" /> </span>
+		 -->
+
+	<div id="title_section">
+		<span id="title">#{messages.general_title}</span>
+	</div>
+
+	<div id="mainmenu">
+		<ui:include src="mainmenu.xhtml" />
+	</div>
+
+	<div id="maincontent">
+			<h1><ui:insert name="werkzoneTitle" /></h1>
+			<p class="intro"><ui:insert name="werkzoneIntro" /></p>
+			
+			<a4j:form id="mainForm">
+			<!-- 
+				<a4j:outputPanel id="feedbackzone-div" ajaxRendered="true" layout="block">
+					<butskri:messages />
+				</a4j:outputPanel>
+				 -->
+				<div id="feedbackzone-div" >
+					<butskri:messages />
+				</div>
+	
+				<div id="werkzone-div"><ui:insert name="werkzone" /></div>
+				<div id="knoppenzone-div">
+					<ui:insert name="knoppenzone" />
+					<img id="progressIndicator" src="#{facesContext.externalContext.requestContextPath}/static/images/progress/progress11.gif" class="progressIndicator" align="middle" />	
+				</div>
+			</a4j:form>
+	</div>
+
+	<div id="footer">
+		<span id="footer_text">
+			#{messages.general_footer}
+		</span>
+	</div>
+</f:view>
+
+</body>
+</html>

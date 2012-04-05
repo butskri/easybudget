@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:butskri="http://www.butskri.be/taglib/jsf"
+      xmlns:rich="http://richfaces.org/rich">
+    
+    <rich:panelMenu style="width:200px"  mode="ajax"
+        iconExpandedGroup="disc" iconCollapsedGroup="disc" 
+        iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right" 
+        iconCollapsedTopGroup="chevronDown" iconCollapsedTopPosition="right" >
+        <rich:panelMenuGroup label="#{messages.menuitem_uitgaven}">
+            <butskri:panelMenuItem label="#{messages.menuitem_uitgaven_nieuwe_categorie}" flow="uitgavenNieuweCategorie" />
+            <butskri:panelMenuItem label="#{messages.menuitem_uitgaven_nieuwe_subcategorie}" flow="uitgavenNieuweSubcategorie" />
+            <butskri:panelMenuItem label="#{messages.menuitem_uitgaven_nieuwe}" flow="nieuweUitgave" />
+            <butskri:panelMenuItem label="#{messages.menuitem_uitgaven_zoeken}" flow="uitgavenZoeken" />
+        </rich:panelMenuGroup>
+        <rich:panelMenuGroup label="#{messages.menuitem_inkomsten}">
+            <butskri:panelMenuItem label="#{messages.menuitem_inkomsten_nieuwe_categorie}" flow="inkomstenNieuweCategorie" />
+            <butskri:panelMenuItem label="#{messages.menuitem_inkomsten_nieuwe_subcategorie}" flow="inkomstenNieuweSubcategorie" />
+            <butskri:panelMenuItem label="#{messages.menuitem_inkomsten_nieuwe}" flow="nieuweInkomsten" />
+            <butskri:panelMenuItem label="#{messages.menuitem_inkomsten_zoeken}" flow="inkomstenZoeken" />
+        </rich:panelMenuGroup>
+    </rich:panelMenu>
+    
+</ui:composition>

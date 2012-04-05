@@ -1,0 +1,28 @@
+img.progressIndicator {
+	height: 16px;
+	margin-top: 3px;
+	display:none;
+}
+
+input[type=checkbox], input[type=radio] {
+	border-style: none;
+}
+
+input[type=text], textarea, select {
+	width: 230px;
+}
+
+select[disabled],  input[type="text"][disabled] , textarea[disabled] {
+	background-color: #CCCCCC;
+}
+
+input.button[disabled] {
+	color: #CCCCCC;
+	font-style: italic;
+}
+
+.label {
+	width: 200px;
+	text-align: right;
+	padding: 6px;
+}

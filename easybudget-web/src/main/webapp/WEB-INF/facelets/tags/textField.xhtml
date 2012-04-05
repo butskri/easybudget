@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:butskri="http://www.butskri.be/taglib/jsf"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<ui:composition>
+	<c:if test="#{empty required}">
+		<c:set var="required" value="true" />
+	</c:if>
+	<c:if test="#{empty rendered}">
+		<c:set var="rendered" value="true" />
+	</c:if>
+	<butskri:field fieldName="#{fieldName}" label="#{label}">
+		<h:inputText id="#{fieldName}" value="#{entity[fieldName]}" required="#{required}" rendered="#{rendered}">
+			<ui:insert />
+			<f:attribute name="label" value="#{label}" />
+		</h:inputText>
+	</butskri:field>
+</ui:composition>
+
+</html>

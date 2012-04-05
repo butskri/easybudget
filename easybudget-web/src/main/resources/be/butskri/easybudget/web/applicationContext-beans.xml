@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="locator" class="be.butskri.commons.context.Locator" factory-method="getInstance" />
+	
+	<bean id="messageHandler" class="be.butskri.commonweb.faces.util.MessageHandler" />
+	
+	<bean id="actionBean" class="be.butskri.commonweb.util.ActionBean" />
+	
+	<bean id="uitgaveController" class="be.butskri.web.easybudget.flows.nieuweuitgave.UitgaveController">
+		<property name="messageHandler" ref="messageHandler" />
+		<property name="uitgaveFacade" ref="uitgaveFacade" />
+	</bean>
+	
+	<bean id="selectItemsBean" class="be.butskri.web.easybudget.SelectItemsBean">
+		<property name="selectItemAssembler">
+			<bean class="be.butskri.web.easybudget.SelectItemAssembler" />
+		</property>
+		<property name="uitgaveFacade" ref="uitgaveFacade" />
+	</bean>
+</beans>

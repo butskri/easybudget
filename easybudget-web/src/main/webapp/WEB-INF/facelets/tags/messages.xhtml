@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition>
+	<rich:messages id="messages" showDetail="false" styleClass="feedbackzone" errorClass="error" infoClass="info"
+		warnClass="warning">
+		<f:facet name="errorMarker">
+			<h:graphicImage id="msgIcon" value="/static/images/error.gif" />
+		</f:facet>
+		<f:facet name="warnMarker">
+			<h:graphicImage id="msgIcon" value="/static/images/warning.gif" />
+		</f:facet>
+		<f:facet name="infoMarker">
+			<h:graphicImage id="msgIcon" value="/static/images/passed.gif" />
+		</f:facet>
+	</rich:messages>
+</ui:composition>
+
+</html>

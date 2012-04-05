@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<!-- Omdat een action oftewel een literal, oftewel een MethodExpression verwacht, doen we hier een workaround via de singletonbean
+	'actionBean'. We zetten het action element via f:param op de request, de actionBean gaat die daar op zijn beurt ophalen.
+	Zie ook de klasse ActionBean. -->
+
+<ui:composition>
+	<c:if test="#{empty progressLabel}">
+		<c:set var="progressLabel"  value="#{value}" />		
+	</c:if>
+
+	<h:commandButton id="#{id}" immediate="#{immediate}"
+		value="#{value}" action="#{actionBean.getActionFromRequest}"
+		styleClass="#{styleClass}" style="#{style}" onfocus="#{onfocus}"
+		onclick="showProgress(this, '#{progressLabel}'); #{onclick}"  rendered="#{rendered ne false}">
+		<f:setPropertyActionListener value="#{action}" target="#{requestScope.action}" />
+		<f:param name="action" value="#{action}" />
+		<ui:insert />
+	</h:commandButton>
+</ui:composition>
+
+</html>

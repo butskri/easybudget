@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.0.2.v200711172000]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<configs>
+		<config>src/main/resources/be/butskri/easybudget/database-config.xml</config>
+		<config>src/main/resources/be/butskri/easybudget/domain-config.xml</config>
+		<config>src/main/resources/be/butskri/easybudget/environment-config.xml</config>
+		<config>src/main/resources/be/butskri/easybudget/facade-config.xml</config>
+		<config>src/main/resources/be/butskri/easybudget/hibernate-config.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[easybudgetConfigSet]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/be/butskri/easybudget/database-config.xml</config>
+				<config>src/main/resources/be/butskri/easybudget/domain-config.xml</config>
+				<config>src/main/resources/be/butskri/easybudget/environment-config.xml</config>
+				<config>src/main/resources/be/butskri/easybudget/facade-config.xml</config>
+				<config>src/main/resources/be/butskri/easybudget/hibernate-config.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
