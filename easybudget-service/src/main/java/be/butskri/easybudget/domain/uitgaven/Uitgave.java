@@ -7,6 +7,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +21,7 @@ import be.butskri.easybudget.domain.base.Geldstroom;
 public class Uitgave implements Geldstroom {
 
 	@Id
-	@GeneratedValue(generator = "UitgaveSeq")
+	@GeneratedValue(generator = "UitgaveSeq", strategy=GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "UitgaveSeq", sequenceName = "UITGAVE_SEQ", allocationSize = 1)
 	private Long id;
 	@Version

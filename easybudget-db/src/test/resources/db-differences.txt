@@ -1,0 +1,7 @@
+Verschillende datatypes:
+------------------------
+postgresql		hsql
+int8			int
+
+CREATE SEQUENCE INKOMST_CATEGORIE_SEQ INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE INKOMST_CATEGORIE_SEQ;

@@ -1,21 +1,21 @@
 package be.butskri.easybudget.facade.impl.algemeen;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.internal.runners.JUnit4ClassRunner;
 import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 
 import be.butskri.commons.test.BaseAssert;
 import be.butskri.easybudget.domain.uitgaven.UitgaveCategorie;
-import be.butskri.easybudget.domain.uitgaven.UitgaveCategorieMother;
+import be.butskri.easybudget.domain.uitgaven.UitgaveCategorieBuilder;
 import be.butskri.easybudget.facade.algemeen.CategorieTo;
 
-@RunWith(JUnit4ClassRunner.class)
+@RunWith(BlockJUnit4ClassRunner.class)
 public class CategorieToAssemblerTest {
 
 	private static final Long ID1 = 15L;
@@ -31,7 +31,7 @@ public class CategorieToAssemblerTest {
 
 	@Test
 	public void createToMaaktEenCategorieToMetDeJuisteWaarden() {
-		UitgaveCategorie categorie = UitgaveCategorieMother.createCategorie(ID1, OMSCHRIJVING1);
+		UitgaveCategorie categorie = createCategorie(ID1, OMSCHRIJVING1);
 
 		CategorieTo categorieTo = assembler.createTo(categorie);
 		assertCategorieTo(categorieTo, ID1, OMSCHRIJVING1);
@@ -39,8 +39,8 @@ public class CategorieToAssemblerTest {
 
 	@Test
 	public void createTosMaaktEenCategorieToVoorElkeUitgaveCategorie() {
-		UitgaveCategorie categorie1 = UitgaveCategorieMother.createCategorie(ID1, OMSCHRIJVING1);
-		UitgaveCategorie categorie2 = UitgaveCategorieMother.createCategorie(ID2, OMSCHRIJVING2);
+		UitgaveCategorie categorie1 = createCategorie(ID1, OMSCHRIJVING1);
+		UitgaveCategorie categorie2 = createCategorie(ID2, OMSCHRIJVING2);
 
 		List<CategorieTo> categorieTos = assembler.createTos(Arrays.asList(categorie1, categorie2));
 		BaseAssert.assertSize(2, categorieTos);
@@ -53,4 +53,7 @@ public class CategorieToAssemblerTest {
 		assertEquals(expectedOmschrijving, categorieTo.getOmschrijving());
 	}
 
+	private UitgaveCategorie createCategorie(Long id, String omschrijving) {
+		return new UitgaveCategorieBuilder().withOmschrijving(omschrijving).withId(id).build();
+	}
 }

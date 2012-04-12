@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations.Mock;
 
 import be.butskri.commons.test.JUnit4ButskriClassRunner;
 import be.butskri.easybudget.domain.uitgaven.Uitgave;
-import be.butskri.easybudget.domain.uitgaven.UitgaveMother;
+import be.butskri.easybudget.domain.uitgaven.UitgaveBuilder;
 import be.butskri.easybudget.facade.algemeen.CategorieTo;
 import be.butskri.easybudget.facade.algemeen.GeldstroomTo;
 import be.butskri.easybudget.facade.impl.algemeen.CategorieToAssembler;
@@ -33,8 +33,8 @@ public class UitgaveToAssemblerTest {
 	@Test
 	public void createToMaaktUitgaveToMetJuisteWaardenVoorPrimitieveVelden() {
 		Long uitgaveId = Long.valueOf(15);
-		Uitgave uitgave = UitgaveMother.createUitgave();
-		UitgaveMother.setId(uitgave, uitgaveId);
+		Uitgave uitgave = new UitgaveBuilder().build();
+		UitgaveBuilder.setId(uitgave, uitgaveId);
 
 		GeldstroomTo uitgaveTo = assembler.createTo(uitgave);
 		assertEquals(uitgaveId, uitgaveTo.getId().getId());
@@ -44,7 +44,7 @@ public class UitgaveToAssemblerTest {
 
 	@Test
 	public void createToMaaktUitgaveToMetJuisteWaardeVoorCategorie() {
-		Uitgave uitgave = UitgaveMother.createUitgave();
+		Uitgave uitgave = new UitgaveBuilder().build();
 		CategorieTo categorieTo = new CategorieTo();
 		stub(categorieToAssemblerMock.createTo(uitgave.getCategorie())).toReturn(categorieTo);
 

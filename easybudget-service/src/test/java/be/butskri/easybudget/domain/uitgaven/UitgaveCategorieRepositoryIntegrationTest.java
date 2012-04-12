@@ -7,9 +7,12 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import be.butskri.easybudget.domain.AbstractRepositoryTest;
+import be.butskri.easybudget.domain.AbstractIntegrationTest;
 
-public class UitgaveCategorieRepositoryTest extends AbstractRepositoryTest {
+public class UitgaveCategorieRepositoryIntegrationTest extends AbstractIntegrationTest {
+
+	public UitgaveCategorieRepositoryIntegrationTest() {
+	}
 
 	@Resource
 	private UitgaveCategorieRepository repository;

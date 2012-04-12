@@ -12,9 +12,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import be.butskri.commons.types.Bedrag;
-import be.butskri.easybudget.domain.AbstractRepositoryTest;
+import be.butskri.easybudget.domain.AbstractIntegrationTest;
 
-public class UitgaveRepositoryTest extends AbstractRepositoryTest {
+public class UitgaveRepositoryIntegrationTest extends AbstractIntegrationTest {
 
 	@Resource
 	private UitgaveRepository repository;
@@ -27,10 +27,9 @@ public class UitgaveRepositoryTest extends AbstractRepositoryTest {
 
 	@Before
 	public void setUp() {
-		categorie = UitgaveCategorieMother.createCategorie();
+		categorie = new UitgaveCategorieBuilder().build();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Test
 	public void persistSchrijftUitgaveWegNaarDb() {
 		Date datum = new Date();

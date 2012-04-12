@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,7 +17,7 @@ import be.butskri.easybudget.domain.base.Categorie;
 public class UitgaveCategorie implements Categorie {
 
 	@Id
-	@GeneratedValue(generator = "UitgaveCategorieSeq")
+	@GeneratedValue(generator = "UitgaveCategorieSeq", strategy=GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "UitgaveCategorieSeq", sequenceName = "UITGAVE_CATEGORIE_SEQ", allocationSize = 1)
 	private Long id;
 
@@ -26,9 +27,6 @@ public class UitgaveCategorie implements Categorie {
 	@Basic
 	private String omschrijving;
 
-	// @OneToMany(mappedBy = "parent")
-	// private List<UitgaveCategorie> subcategorien;
-
 	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@JoinColumn(name = "fk_parent")
 	private UitgaveCategorie parent;
@@ -36,10 +34,6 @@ public class UitgaveCategorie implements Categorie {
 	public UitgaveCategorie(UitgaveCategorie parent, String omschrijving) {
 		this.omschrijving = omschrijving;
 		this.parent = parent;
-		// this.subcategorien = new ArrayList<UitgaveCategorie>();
-		// if (parent != null) {
-		// parent.addSubcategorie(this);
-		// }
 	}
 
 	UitgaveCategorie() {
@@ -71,27 +65,4 @@ public class UitgaveCategorie implements Categorie {
 			return parent.getOmschrijving() + " - " + omschrijving;
 		}
 	}
-
-	// private void addSubcategorie(UitgaveCategorie subcategorie) {
-	// subcategorien.add(subcategorie);
-	// }
-
-	@Deprecated
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	// public List<UitgaveCategorie> getSubcategorien() {
-	// return subcategorien;
-	// }
-	//
-	// public List<UitgaveCategorie> getAlleSubcategorien() {
-	// List<UitgaveCategorie> result = new ArrayList<UitgaveCategorie>();
-	// result.addAll(subcategorien);
-	// for (UitgaveCategorie uitgaveCategorie : subcategorien) {
-	// result.addAll(uitgaveCategorie.getAlleSubcategorien());
-	// }
-	// return result;
-	// }
-
 }

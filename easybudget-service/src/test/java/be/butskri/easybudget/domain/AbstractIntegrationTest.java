@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:be/butskri/easybudget/application-config.xml",
-		"classpath:/test-config.xml" })
+		"classpath:/test-config.xml", "classpath:be/butskri/easybudget/db/easybudget-db-testcontext.xml" })
 @Transactional
-public abstract class AbstractRepositoryTest {
+public abstract class AbstractIntegrationTest {
 
 	@PersistenceContext
 	private EntityManager entityManager;

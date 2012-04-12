@@ -9,44 +9,41 @@ import static org.mockito.Mockito.verify;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations.Mock;
-import org.unitils.inject.annotation.InjectIntoByType;
-import org.unitils.inject.annotation.TestedObject;
 
 import be.butskri.commons.test.JUnit4ButskriClassRunner;
 import be.butskri.commons.types.Identifier;
 import be.butskri.commons.util.RandomizerUtil;
 import be.butskri.easybudget.domain.uitgaven.UitgaveCategorie;
-import be.butskri.easybudget.domain.uitgaven.UitgaveCategorieMother;
+import be.butskri.easybudget.domain.uitgaven.UitgaveCategorieBuilder;
 import be.butskri.easybudget.domain.uitgaven.UitgaveCategorieRepository;
 import be.butskri.easybudget.facade.algemeen.CategorieTo;
 import be.butskri.easybudget.facade.impl.algemeen.CategorieToAssembler;
-import be.butskri.easybudget.facade.impl.algemeen.SubcategorieToAssembler;
 
 @RunWith(JUnit4ButskriClassRunner.class)
 public class UitgaveFacadeImplTest {
 
-	@InjectIntoByType
 	@Mock
 	private UitgaveCategorieRepository uitgaveCategorieRepositoryMock;
-	// @InjectIntoByType
 	@Mock
 	private CategorieToAssembler categorieToAssemblerMock;
-	// @InjectIntoByType
-	@Mock
-	private SubcategorieToAssembler subcategorieToAssemblerMock;
 
-	@TestedObject
 	private UitgaveFacadeImpl uitgaveFacade;
+	
+	@Before
+	public void setUp() {
+		uitgaveFacade = new UitgaveFacadeImpl();
+	}
 
 	@Ignore
 	@Test
 	public void getAlleCategorienConverteertAlleCategorienNaarTos() {
 		List<UitgaveCategorie> uitgaveCategorien = Arrays
-				.asList(UitgaveCategorieMother.createCategorie());
+				.asList(new UitgaveCategorieBuilder().build());
 		List<CategorieTo> categorieTos = Arrays.asList(new CategorieTo());
 
 		stub(uitgaveCategorieRepositoryMock.findAll()).toReturn(
