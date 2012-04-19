@@ -2,11 +2,16 @@
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<parent>
+		<groupId>be.butskri</groupId>
+		<artifactId>butskri-base</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>be.butskri</groupId>
 	<artifactId>easybudget-parent</artifactId>
 	<packaging>pom</packaging>
-	<name>easybudget</name>
+	<name>easybudget-parent</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<description />
 	<properties>
@@ -17,18 +22,19 @@
 		<log4j.version>1.2.14</log4j.version>
 		<spring.version>3.1.1.RELEASE</spring.version>
 		<easybudget.version>0.0.1-SNAPSHOT</easybudget.version>
+		<butskri-common.version>0.0.1-SNAPSHOT</butskri-common.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>be.butskri</groupId>
 				<artifactId>butskri-commonutils</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${butskri-common.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>be.butskri</groupId>
 				<artifactId>butskri-commontest</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${butskri-common.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>be.butskri</groupId>
@@ -57,34 +63,6 @@
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
 				<version>1.6.8</version>
-			</dependency>
-			
-			<!-- SPRING DEPENDENCIES -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-				<scope>test</scope>
 			</dependency>
 			
 			<!--  WICKET DEPENDENCIES -->
@@ -124,13 +102,6 @@
 				<version>${jetty.eclipse.version}</version>
 				<scope>test</scope>
 			</dependency>
-			
-		    <dependency>
-		      <groupId>junit</groupId>
-		      <artifactId>junit</artifactId>
-		      <version>4.8.1</version>
-		      <scope>test</scope>
-		    </dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>

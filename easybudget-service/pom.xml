@@ -11,7 +11,7 @@
 	<groupId>be.butskri</groupId>
 	<artifactId>easybudget-service</artifactId>
 	<packaging>jar</packaging>
-	<name />
+	<name>easybudget-service</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<description />
 	<dependencies>
