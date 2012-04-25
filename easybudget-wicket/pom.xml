@@ -25,26 +25,8 @@
 	<dependencies>
 		<!--  WICKET DEPENDENCIES -->
 		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket</artifactId>
-			<type>pom</type>
-		</dependency>
-		<!-- OPTIONAL -->
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-extensions</artifactId>
-		</dependency>
-
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
+			<groupId>be.butskri</groupId>
+			<artifactId>butskri-commonwicket</artifactId>
 		</dependency>
 
 		<!--  JUNIT DEPENDENCY FOR TESTING -->

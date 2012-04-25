@@ -11,11 +11,13 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.internal.runners.MockitoRule;
 import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.MockitoAnnotations.Mock;
 
-import be.butskri.commons.test.JUnit4ButskriClassRunner;
 import be.butskri.commons.types.Identifier;
 import be.butskri.commons.util.RandomizerUtil;
 import be.butskri.easybudget.domain.uitgaven.UitgaveCategorie;
@@ -24,9 +26,12 @@ import be.butskri.easybudget.domain.uitgaven.UitgaveCategorieRepository;
 import be.butskri.easybudget.facade.algemeen.CategorieTo;
 import be.butskri.easybudget.facade.impl.algemeen.CategorieToAssembler;
 
-@RunWith(JUnit4ButskriClassRunner.class)
+@RunWith(BlockJUnit4ClassRunner.class)
 public class UitgaveFacadeImplTest {
 
+	@Rule
+	public MockitoRule mockitoRule = new MockitoRule();
+	
 	@Mock
 	private UitgaveCategorieRepository uitgaveCategorieRepositoryMock;
 	@Mock

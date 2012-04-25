@@ -15,12 +15,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<description />
 	<properties>
-		<wicket.version>1.5.5</wicket.version>
 		<jetty.version>7.0.0.pre5</jetty.version>
 		<jetty.eclipse.version>8.0.0.M2</jetty.eclipse.version>
- 		<slf4j.version>1.5.8</slf4j.version>
-		<log4j.version>1.2.14</log4j.version>
-		<spring.version>3.1.1.RELEASE</spring.version>
 		<easybudget.version>0.0.1-SNAPSHOT</easybudget.version>
 		<butskri-common.version>0.0.1-SNAPSHOT</butskri-common.version>
 	</properties>
@@ -34,6 +30,11 @@
 			<dependency>
 				<groupId>be.butskri</groupId>
 				<artifactId>butskri-commontest</artifactId>
+				<version>${butskri-common.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>be.butskri</groupId>
+				<artifactId>butskri-commonwicket</artifactId>
 				<version>${butskri-common.version}</version>
 			</dependency>
 			<dependency>
@@ -63,24 +64,6 @@
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
 				<version>1.6.8</version>
-			</dependency>
-			
-			<!--  WICKET DEPENDENCIES -->
-			<dependency>
-				<groupId>org.apache.wicket</groupId>
-				<artifactId>wicket</artifactId>
-				<version>${wicket.version}</version>
-				<type>pom</type>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.wicket</groupId>
-				<artifactId>wicket-extensions</artifactId>
-				<version>${wicket.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.wicket</groupId>
-				<artifactId>wicket-spring</artifactId>
-				<version>${wicket.version}</version>
 			</dependency>
 			
 			<!--  JETTY DEPENDENCIES FOR TESTING  -->

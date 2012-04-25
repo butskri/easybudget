@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.stub;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.internal.runners.MockitoRule;
 import org.mockito.MockitoAnnotations.Mock;
 
-import be.butskri.commons.test.JUnit4ButskriClassRunner;
 import be.butskri.easybudget.domain.uitgaven.Uitgave;
 import be.butskri.easybudget.domain.uitgaven.UitgaveBuilder;
 import be.butskri.easybudget.facade.algemeen.CategorieTo;
@@ -16,9 +16,11 @@ import be.butskri.easybudget.facade.algemeen.GeldstroomTo;
 import be.butskri.easybudget.facade.impl.algemeen.CategorieToAssembler;
 import be.butskri.easybudget.facade.impl.algemeen.GeldstroomToAssembler;
 
-@RunWith(JUnit4ButskriClassRunner.class)
 public class UitgaveToAssemblerTest {
 
+	@Rule
+	public MockitoRule mockitoRule = new MockitoRule();
+	
 	@Mock
 	private CategorieToAssembler categorieToAssemblerMock;
 
